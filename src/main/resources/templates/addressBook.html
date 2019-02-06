@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:if="${not #lists.isEmpty(books)}">
+    <h1>Result</h1>
+    <body>
+        <table>
+        <span th:each="book : ${books}">
+            <td th:if="${not #lists.isEmpty(book.buddies)}">
+                <tr th:each="buddy: ${book.buddies}">
+                    <p th:text="${buddy.toString()}"></p>
+                </tr>
+            <td>
+        </span>
+        </table>
+    </body>
+</div>
+</html>
+
+<div>
+    <h1>Result</h1>
+    <body>
+    <p each="book : ${books}"
+       text="buddies: ${book.buddies}"></p>
+    </body>
+</div>
+</html>
