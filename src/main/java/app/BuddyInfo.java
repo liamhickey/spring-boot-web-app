@@ -10,22 +10,24 @@ public class BuddyInfo {
     @GeneratedValue
     private Integer Id = null;
     private String name;
+    private String prefix;
     private String address;
     private String phoneNumber;
     private String greeting;
     private int age;
 
-    public BuddyInfo(String name, String address, String phoneNumber, String greeting, int age) {
+    public BuddyInfo(String name, String prefix, String address, String phoneNumber, String greeting, int age) {
         super();
         this.name = name;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.prefix = prefix;
         this.greeting = greeting;
         this.age = age;
     }
 
     public BuddyInfo() {
-        this("Miles Davis", "444-444-444", "123 Green Dolphin Street", "*jazz*", 65);
+        this("Miles Davis", "Mr.", "444-444-444", "123 Green Dolphin Street", "*jazz*", 65);
     }
 
     public String getName() {
@@ -34,6 +36,15 @@ public class BuddyInfo {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getPrefix() {
+        return prefix;
+    }
+
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
     }
 
     public String getAddress() {
@@ -107,6 +118,6 @@ public class BuddyInfo {
 
     @Override
     public String toString() {
-        return name + ", " + address + ", " + phoneNumber;
+        return prefix + ", " + name + ", " + address + ", " + phoneNumber;
     }
 }
