@@ -3,17 +3,34 @@ package app;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class BuddyInfo {
     @Id
     @GeneratedValue
     private Integer Id = null;
+    @NotNull
+    @Size(min = 1, max = 40)
     private String name;
+    @NotNull
+    @Size(min = 1, max = 10)
     private String prefix;
+    @NotNull
+    @Size(min = 1, max = 50)
     private String address;
+    @NotNull
+    @Size(min = 1, max = 14)
     private String phoneNumber;
+    @NotNull
+    @Size(min = 1, max = 20)
     private String greeting;
+    @NotNull
+    @Min(1)
+    @Max(150)
     private int age;
 
     public BuddyInfo(String name, String prefix, String address, String phoneNumber, String greeting, int age) {
@@ -25,6 +42,8 @@ public class BuddyInfo {
         this.greeting = greeting;
         this.age = age;
     }
+
+    public BuddyInfo(String name, String address, String phoneNumber, int age) { this(name, "", address, phoneNumber, "", age); }
 
     public BuddyInfo() {
         this("Miles Davis", "Mr.", "444-444-444", "123 Green Dolphin Street", "*jazz*", 65);

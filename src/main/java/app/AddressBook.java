@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -12,15 +13,13 @@ public class AddressBook {
     @Id
     @GeneratedValue
     private Integer Id = null;
+    @NotNull
     @OneToMany
     private List<BuddyInfo> buddies;
+    private static final AddressBook INSTANCE = new AddressBook();
 
-    public AddressBook() {
+    private AddressBook() {
         this.buddies = new ArrayList<>();
-    }
-
-    public AddressBook(List<BuddyInfo> buddies) {
-        this.buddies = buddies;
     }
 
     public void addBuddy(BuddyInfo bi) {
@@ -54,6 +53,10 @@ public class AddressBook {
 
     public void clear() {
         buddies = new ArrayList<>();
+    }
+
+    public static AddressBook getInstance() {
+        return INSTANCE;
     }
 
     public boolean equals(Object o) {

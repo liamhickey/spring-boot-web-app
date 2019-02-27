@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script th:src="@{/Scripts/addressBook.js}"></script>
+
+<form id="buddyForm" action="#" th:action="@{/addressBook}" method="post" onsubmit="createBuddy(event)">
+    Name: <input type="text" name="name"><br>
+    Address: <input type="text" name="address"><br>
+    Phone: <input type="text" name="phoneNumber"><br>
+    Age: <input type="number" name="age" min="1" max="150"><br>
+    <input type="submit" />
+</form>
+
+<div>
+    <h1>Result</h1>
+    <body>
+    <table id="tableBuddies">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+        <tr></tr>
+    </table>
+    </body>
+</div>
+</html>
